@@ -133,6 +133,7 @@ const MultiplyIntentHandler = {
         if (firstNumber && secondNumber) {
         let result = parseInt(firstNumber) * parseInt(secondNumber)
         speechText = `${firstNumber} multiplied by ${secondNumber} is ${result}`
+        
         return handlerInput.responseBuilder
             .speak(speechText)
             .getResponse();
@@ -143,7 +144,6 @@ const MultiplyIntentHandler = {
             .getResponse()
             
         }
-        
     }
 }
 
