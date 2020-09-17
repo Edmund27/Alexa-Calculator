@@ -126,7 +126,7 @@ const MultiplyIntentHandler = {
     
     handle(handlerInput) {
         let speechText = ''
-        let Intent = handlerInput.requestEnvelope.request.intent
+        let intent = handlerInput.requestEnvelope.request.intent
         let firstNumber = intent.slots.firstNumber.value
         let secondNumber = intent.slots.secondNumber.value
         
@@ -142,7 +142,7 @@ const MultiplyIntentHandler = {
             
         } else {
             return handlerInput.responseBuilder
-            .addDelegateDirective(Intent)
+            .addDelegateDirective(intent)
             .getResponse()
             
         }
