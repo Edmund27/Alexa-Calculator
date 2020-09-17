@@ -129,7 +129,16 @@ const MultiplyIntentHandler = {
         let Intent = handlerInput.requestEnvelope.request.intent
         let firstNumber = intent.slots.firstNumber.value
         let secondNumber = intent.slots.secondNumber.value
-        let result = firstNumber * secondNumber
+        
+        if (firstNumber && secondNumber) {
+        let result = parseInt(firstNumber) * parseInt(secondNumber)
+            
+        } else {
+            return handlerInput.responseBuilder
+            .addDelegateDirective(Intent)
+            .getResponse()
+            
+        }
         
         speechText = `${firstNumber} multiplied by ${secondNumber} is ${result}`
         return handlerInput.responseBuilder
