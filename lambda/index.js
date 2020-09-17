@@ -120,8 +120,8 @@ const IntentReflectorHandler = {
 
 const MultiplyIntentHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-        && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.MultiplyIntentHandler';
+        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+        && handlerInput.requestEnvelope.request.intent.name === 'MultiplyIntent';
     }
     
     handle(handlerInput) {
@@ -136,7 +136,9 @@ const MultiplyIntentHandler = {
         
         return handlerInput.responseBuilder
             .speak(speechText)
+            .withShouldEndSession(true)
             .getResponse();
+            
             
         } else {
             return handlerInput.responseBuilder
