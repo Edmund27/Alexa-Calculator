@@ -116,6 +116,29 @@ const IntentReflectorHandler = {
             .getResponse();
     }
 };
+
+
+const MultiplyIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+        && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.MultiplyIntentHandler';
+    }
+    
+    handle(handlerInput) {
+        let speechText = ''
+        let Intent = handlerInput.requestEnvelope.request.intent
+        let firstNumber = intent.slots.firstNumber.value
+        let secondNumber = intent.slots.secondNumber.value
+        let result = firstNumber * secondNumber
+        
+        speechText = `${firstNumber} multiplied by ${secondNumber} is ${result}`
+        return handlerInput.responseBuilder
+            .speak(speechText)
+            .getResponse();
+    }
+}
+
+
 /**
  * Generic error handling to capture any syntax or routing errors. If you receive an error
  * stating the request handler chain is not found, you have not implemented a handler for
@@ -149,7 +172,8 @@ exports.handler = Alexa.SkillBuilders.custom()
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
         SessionEndedRequestHandler,
-        IntentReflectorHandler)
+        IntentReflectorHandler),
+        MultiplyIntentHandler
     .addErrorHandlers(
         ErrorHandler)
     .withCustomUserAgent('sample/hello-world/v1.2')
