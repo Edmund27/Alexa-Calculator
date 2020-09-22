@@ -120,7 +120,7 @@ const IntentReflectorHandler = {
 
 const MultiplyIntentHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest';
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
         //return handlerInput.requestEnvelope.request.type === 'IntentRequest'
         && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MultiplyIntent';
        // && handlerInput.requestEnvelope.request.intent.name === 'MultiplyIntent';
