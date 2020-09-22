@@ -180,13 +180,13 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
+        MultiplyIntentHandler,
         HelloWorldIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
         SessionEndedRequestHandler,
-        IntentReflectorHandler,
-        MultiplyIntentHandler)
+        IntentReflectorHandler)
     .addErrorHandlers(
         ErrorHandler)
     .withCustomUserAgent('sample/hello-world/v1.2')
