@@ -143,7 +143,7 @@ const MultiplyIntentHandler = {
         } else {
             return handlerInput.responseBuilder
             .addDelegateDirective(intent)
-            .getResponse()
+            .getResponse();
             
         }
     }
