@@ -77,6 +77,37 @@ const PlusIntentHandler = {
     }
 }
 
+const MinusIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MinusIntent';
+    },
+
+    handle(handlerInput) {
+        let speechText = ''
+        let intent = handlerInput.requestEnvelope.request.intent
+        let firstNumber = intent.slots.firstNumber.value
+        let secondNumber = intent.slots.secondNumber.value
+
+        if (firstNumber && secondNumber) {
+            let result = parseInt(firstNumber) - parseInt(secondNumber)
+            speechText = `${firstNumber} minus ${secondNumber} is ${result}`
+
+            return handlerInput.responseBuilder
+                .speak(speechText)
+                .withShouldEndSession(true)
+                .getResponse();
+
+
+        } else {
+            return handlerInput.responseBuilder
+                .addDelegateDirective(intent)
+                .getResponse();
+
+        }
+    }
+}
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -192,6 +223,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         LaunchRequestHandler,
         MultiplyIntentHandler,
         PlusIntentHandler,
+        MinusIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

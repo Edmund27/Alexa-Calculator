@@ -71,6 +71,31 @@
             "sum numbers",
             "add numbers"
           ]
+        },
+        {
+          "name": "MinusIntent",
+          "slots": [
+            {
+              "name": "firstNumber",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{firstNumber}"
+              ]
+            },
+            {
+              "name": "secondNumber",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{secondNumber}"
+              ]
+            }
+          ],
+          "samples": [
+            "subtract two numbers",
+            "subtract numbers",
+            "subtract {secondNumber} from {firstNumber}",
+            "{firstNumber} minus {secondNumber}"
+          ]
         }
       ],
       "types": []
@@ -126,6 +151,31 @@
               }
             }
           ]
+        },
+        {
+          "name": "MinusIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "firstNumber",
+              "type": "AMAZON.NUMBER",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.326204283541.782531945714"
+              }
+            },
+            {
+              "name": "secondNumber",
+              "type": "AMAZON.NUMBER",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.326204283541.430090205509"
+              }
+            }
+          ]
         }
       ],
       "delegationStrategy": "ALWAYS"
@@ -164,6 +214,24 @@
           {
             "type": "PlainText",
             "value": "What is the second number"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.326204283541.430090205509",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is the second number?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.326204283541.782531945714",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is the first number?"
           }
         ]
       }
