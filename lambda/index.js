@@ -1,8 +1,3 @@
-/* *
- * This sample demonstrates handling intents from an Alexa skill using the Alexa Skills Kit SDK (v2).
- * Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
- * session persistence, api calls, and more.
- * */
 const Alexa = require('ask-sdk-core');
 
 const LaunchRequestHandler = {
@@ -19,50 +14,34 @@ const LaunchRequestHandler = {
     }
 };
 
-const HelloWorldIntentHandler = {
-    canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
-    },
-    handle(handlerInput) {
-        const speakOutput = 'Hello World!';
-
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
-    }
-};
 
 const MultiplyIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-        //return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-        && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MultiplyIntent';
-       // && handlerInput.requestEnvelope.request.intent.name === 'MultiplyIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MultiplyIntent';
     },
-    
+
     handle(handlerInput) {
         let speechText = ''
         let intent = handlerInput.requestEnvelope.request.intent
         let firstNumber = intent.slots.firstNumber.value
         let secondNumber = intent.slots.secondNumber.value
-        
+
         if (firstNumber && secondNumber) {
-        let result = parseInt(firstNumber) * parseInt(secondNumber)
-        speechText = `${firstNumber} multiplied by ${secondNumber} is ${result}`
-        
-        return handlerInput.responseBuilder
-            .speak(speechText)
-            .withShouldEndSession(true)
-            .getResponse();
-            
-            
+            let result = parseInt(firstNumber) * parseInt(secondNumber)
+            speechText = `${firstNumber} multiplied by ${secondNumber} is ${result}`
+
+            return handlerInput.responseBuilder
+                .speak(speechText)
+                .withShouldEndSession(true)
+                .getResponse();
+
+
         } else {
             return handlerInput.responseBuilder
-            .addDelegateDirective(intent)
-            .getResponse();
-            
+                .addDelegateDirective(intent)
+                .getResponse();
+
         }
     }
 }
@@ -180,7 +159,6 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        HelloWorldIntentHandler,
         MultiplyIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,

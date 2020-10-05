@@ -1,0 +1,109 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "my calculator",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "MultiplyIntent",
+          "slots": [
+            {
+              "name": "firstNumber",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{firstNumber}"
+              ]
+            },
+            {
+              "name": "secondNumber",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{secondNumber}"
+              ]
+            }
+          ],
+          "samples": [
+            "{firstNumber} multiplied by {secondNumber}",
+            "multiply {firstNumber} and {secondNumber}"
+          ]
+        }
+      ],
+      "types": [],
+      "modelConfiguration": {
+        "fallbackIntentSensitivity": {
+          "level": "LOW"
+        }
+      }
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "MultiplyIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "firstNumber",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.631268269982.1014116448838"
+              }
+            },
+            {
+              "name": "secondNumber",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.631268269982.833307801323"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.631268269982.1014116448838",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is the first number"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.631268269982.833307801323",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is the second number?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "3"
+}
