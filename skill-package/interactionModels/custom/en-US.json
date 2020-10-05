@@ -24,6 +24,30 @@
           "samples": []
         },
         {
+          "name": "PlusIntent",
+          "slots": [
+            {
+              "name": "firstNumber",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{firstNumber}"
+              ]
+            },
+            {
+              "name": "secondNumber",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{secondNumber}"
+              ]
+            }
+          ],
+          "samples": [
+            "{firstNumber} plus {secondNumber}",
+            "sum of {firstNumber} and {secondNumber}",
+            "{firstNumber} and {secondNumber}"
+          ]
+        },
+        {
           "name": "MultiplyIntent",
           "slots": [
             {
