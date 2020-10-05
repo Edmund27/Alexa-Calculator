@@ -96,6 +96,30 @@
             "subtract {secondNumber} from {firstNumber}",
             "{firstNumber} minus {secondNumber}"
           ]
+        },
+        {
+          "name": "DivideIntent",
+          "slots": [
+            {
+              "name": "firstNumber",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{firstNumber}"
+              ]
+            },
+            {
+              "name": "secondNumber",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{secondNumber}"
+              ]
+            }
+          ],
+          "samples": [
+            "divide two numbers",
+            "divide {firstNumber} by {secondNumber}",
+            "{firstNumber} divided by {secondNumber}"
+          ]
         }
       ],
       "types": []
@@ -176,6 +200,31 @@
               }
             }
           ]
+        },
+        {
+          "name": "DivideIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "firstNumber",
+              "type": "AMAZON.NUMBER",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1441946060785.931685288974"
+              }
+            },
+            {
+              "name": "secondNumber",
+              "type": "AMAZON.NUMBER",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1441946060785.1559967434074"
+              }
+            }
+          ]
         }
       ],
       "delegationStrategy": "ALWAYS"
@@ -232,6 +281,24 @@
           {
             "type": "PlainText",
             "value": "What is the first number?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1441946060785.931685288974",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "From what number do you want to divide?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1441946060785.1559967434074",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "By which number do you want to divide?"
           }
         ]
       }
