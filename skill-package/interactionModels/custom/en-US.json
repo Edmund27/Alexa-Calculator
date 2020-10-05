@@ -2,6 +2,11 @@
   "interactionModel": {
     "languageModel": {
       "invocationName": "my calculator",
+      "modelConfiguration": {
+        "fallbackIntentSensitivity": {
+          "level": "LOW"
+        }
+      },
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -42,17 +47,14 @@
             }
           ],
           "samples": [
-            "{firstNumber} multiplied by {secondNumber}",
+            "multiply two numbers",
+            "is  {firstNumber} times {secondNumber}",
+            "is {firstNumber} multiplied by {secondNumber}",
             "multiply {firstNumber} and {secondNumber}"
           ]
         }
       ],
-      "types": [],
-      "modelConfiguration": {
-        "fallbackIntentSensitivity": {
-          "level": "LOW"
-        }
-      }
+      "types": []
     },
     "dialog": {
       "intents": [
@@ -64,8 +66,8 @@
             {
               "name": "firstNumber",
               "type": "AMAZON.NUMBER",
-              "elicitationRequired": true,
               "confirmationRequired": false,
+              "elicitationRequired": true,
               "prompts": {
                 "elicitation": "Elicit.Slot.631268269982.1014116448838"
               }
@@ -73,8 +75,8 @@
             {
               "name": "secondNumber",
               "type": "AMAZON.NUMBER",
-              "elicitationRequired": true,
               "confirmationRequired": false,
+              "elicitationRequired": true,
               "prompts": {
                 "elicitation": "Elicit.Slot.631268269982.833307801323"
               }
@@ -104,6 +106,5 @@
         ]
       }
     ]
-  },
-  "version": "3"
+  }
 }
