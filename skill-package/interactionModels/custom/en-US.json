@@ -52,6 +52,25 @@
             "is {firstNumber} multiplied by {secondNumber}",
             "multiply {firstNumber} and {secondNumber}"
           ]
+        },
+        {
+          "name": "PlusIntent",
+          "slots": [
+            {
+              "name": "firstNumber",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "secondNumber",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "{firstNumber} plus {secondNumber}",
+            "sum {firstNumber} and {secondNumber}",
+            "sum numbers",
+            "add numbers"
+          ]
         }
       ],
       "types": []
@@ -82,6 +101,31 @@
               }
             }
           ]
+        },
+        {
+          "name": "PlusIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "firstNumber",
+              "type": "AMAZON.NUMBER",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1340809074602.1295877225027"
+              }
+            },
+            {
+              "name": "secondNumber",
+              "type": "AMAZON.NUMBER",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1340809074602.478600982151"
+              }
+            }
+          ]
         }
       ],
       "delegationStrategy": "ALWAYS"
@@ -102,6 +146,24 @@
           {
             "type": "PlainText",
             "value": "What is the second number?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1340809074602.1295877225027",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is the first number"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1340809074602.478600982151",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is the second number"
           }
         ]
       }
