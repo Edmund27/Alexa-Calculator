@@ -34,6 +34,39 @@ const HelloWorldIntentHandler = {
     }
 };
 
+const MultiplyIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+        //return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+        && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MultiplyIntent';
+       // && handlerInput.requestEnvelope.request.intent.name === 'MultiplyIntent';
+    },
+    
+    handle(handlerInput) {
+        let speechText = ''
+        let intent = handlerInput.requestEnvelope.request.intent
+        let firstNumber = intent.slots.firstNumber.value
+        let secondNumber = intent.slots.secondNumber.value
+        
+        if (firstNumber && secondNumber) {
+        let result = parseInt(firstNumber) * parseInt(secondNumber)
+        speechText = `${firstNumber} multiplied by ${secondNumber} is ${result}`
+        
+        return handlerInput.responseBuilder
+            .speak(speechText)
+            .withShouldEndSession(true)
+            .getResponse();
+            
+            
+        } else {
+            return handlerInput.responseBuilder
+            .addDelegateDirective(intent)
+            .getResponse();
+            
+        }
+    }
+}
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -118,39 +151,6 @@ const IntentReflectorHandler = {
 };
 
 
-const MultiplyIntentHandler = {
-    canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-        //return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-        && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MultiplyIntent';
-       // && handlerInput.requestEnvelope.request.intent.name === 'MultiplyIntent';
-    },
-    
-    handle(handlerInput) {
-        let speechText = ''
-        let intent = handlerInput.requestEnvelope.request.intent
-        let firstNumber = intent.slots.firstNumber.value
-        let secondNumber = intent.slots.secondNumber.value
-        
-        if (firstNumber && secondNumber) {
-        let result = parseInt(firstNumber) * parseInt(secondNumber)
-        speechText = `${firstNumber} multiplied by ${secondNumber} is ${result}`
-        
-        return handlerInput.responseBuilder
-            .speak(speechText)
-            .withShouldEndSession(true)
-            .getResponse();
-            
-            
-        } else {
-            return handlerInput.responseBuilder
-            .addDelegateDirective(intent)
-            .getResponse();
-            
-        }
-    }
-}
-
 
 /**
  * Generic error handling to capture any syntax or routing errors. If you receive an error
@@ -180,8 +180,8 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        MultiplyIntentHandler,
         HelloWorldIntentHandler,
+        MultiplyIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
